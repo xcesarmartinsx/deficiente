@@ -18,8 +18,8 @@ class DeficientesController extends AppController{
     public $components = array('Session');
     
      public function index($deficiente = null){
-        if($this->data){
-            $nomeBusca = $deficiente['Deficiente'];
+        
+         if($this->data){
             $retorno = $this->Deficiente->find('all', 
                            array('fields' => array('Deficiente.id', 'Deficiente.nome', 'Deficiente.cpf', 'Deficiente.deficiencia'), 
                                  'conditions' => array('Deficiente.nome LIKE'=> '%'.$this->data['Deficiente'].'%')));

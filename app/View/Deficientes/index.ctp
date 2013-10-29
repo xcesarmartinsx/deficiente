@@ -1,56 +1,64 @@
 <!-- File: /app/View/Defcientes/index.ctp -->
        
       <!-- Jumbotron -->
+      
+     
       <div class="jumbotron">
         <h1>CRD!</h1>
         <p class="lead">Ferramenta criada para gerenciar os deficientes da cidade.</p>
         
         <?php 
-             $options = array(
-                 'label' => 'Buscar',
-                 'div' => array(
-                     'class' => 'btn btn-default',
-                 ));
+             
              echo $this->Form->create('Deficiente', array('action' => 'index', 'class' => 'form-search')); 
              echo '<div class="input-append">';
-             echo $this->Form->input('', array('class' => 'span2 search-query', 'escape' => 'false', 'type' => 'text'));
-             echo $this->Form->end($options);
-               //echo '<button type="submit" class="btn"><i class="icon-search"></i></button>';
-             echo '</div>';
+             echo $this->Form->input('', array('class' => 'span2 search-query', 'type' => 'text', 'div' => ''));
+             echo '<button type="submit" class="btn"><i class="icon-search"></i></button>';
+             echo $this->Form->end();
+             echo '</div>'; 
             
-             if(isset($retorno)){ 
-                 echo '<h3>Resultado:</h3>';
-                foreach($retorno as $deficiente)        
-                 echo '<tr>';
-                    echo $deficiente['Deficiente']['nome'].'<br>';
-                    echo $deficiente['Deficiente']['deficiencia'].'<br>'; 
-                    echo $deficiente['Deficiente']['cpf'].'<br>';    
-             }
-         ?>
-        
-        <a href="/deficiente/deficientes/add" class="btn btn-primary btn-large">Add Novo Deficiênte</a>
-        
-      </div>
+             if(isset($retorno)){ ?>
+                 <div class="span9">
+                    <h3>Listagem de Deficientes</h3>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                              <th>Nome</th>
+                              <th>Deficiência</th>
+                              <th>CPF</th>
+                              <th style="width: 20%;">Ações</th>
+                            </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach($retorno as $deficiente): ?>       
+                           <tr>
+                               <td><?php echo $deficiente['Deficiente']['nome']?></td>
+                               <td><?php echo $deficiente['Deficiente']['deficiencia']?></td>
+                               <td><?php echo $deficiente['Deficiente']['cpf']?></td>
+                               <td><?php echo $this->Form->postLink(__('<i class="icon-edit"></i>'), 
+                                   array('action' => 'edit', $deficiente['Deficiente']['id']),
+                                   array('class'=>'btn', 'escape' => false),
+                                   __('Tem Certeza que quer Editar # %s?', $deficiente['Deficiente']['nome'])); ?>
 
+
+                               <?php echo $this->Form->postLink(__('<i class="icon-remove icon-white"></i>'), 
+                                   array('action' => 'delete', $deficiente['Deficiente']['id']),
+                                   array('class'=>'btn btn-danger remover', 'escape' => false),
+                                   __('Tem Certeza que quer deleter # %s?', $deficiente['Deficiente']['nome'])); ?></td</br>
+                           </tr> 
+
+                               <?php   endforeach;  } ?>
+                       </tbody>
+                    </table>
+                </div>
+        </div>
+      
       <hr>
-      <!-- Example row of columns -->
-      <div class="row-fluid">
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
+      <div class="jumbotron">
+      <a href="/deficiente/deficientes/add" class="btn btn-primary btn-large">Add Novo Deficiênte</a>
       </div>
+      </hr>
+      <!-- Example row of columns -->
+      
 
      
    
