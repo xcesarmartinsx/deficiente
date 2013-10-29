@@ -1,7 +1,9 @@
 <!-- File: /app/View/Deficientes/listar.ctp -->
-   <div class="span9">
+<div class="container">
+<div class="row">
+<div class="span12">
 	<h3>Listagem de Deficientes</h3>
-		<table class="table table-bordered table-hover">
+ <table class="table table-bordered table-hover">
     <thead>
     <tr>
       <th>Nome</th>
@@ -10,7 +12,7 @@
       <th style="width: 20%;">Ações</th>
     </tr>
   </thead>
-  <tbody>
+ 
         <?php foreach ($deficientes as $deficiente): ?>
             <tr>
                 <td><?php echo $deficiente['Deficiente']['nome']?></td>
@@ -28,6 +30,8 @@
                     __('Tem Certeza que quer deleter # %s?', $deficiente['Deficiente']['nome'])); ?></td>
             </tr>
         <?php endforeach; ?>
-    </tbody>
-	</table>
-</div>
+ 
+ </table>
+        </div>
+    </div>
+  </div>
