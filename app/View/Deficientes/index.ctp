@@ -19,7 +19,7 @@
              echo '</div>';
             
              if(isset($retorno)){ 
-                 echo '<h3>Resultado:</h3>';
+                 echo '<h3>Resultado123:</h3>';
                 foreach($retorno as $deficiente)        
                  echo '<tr>';
                     echo $deficiente['Deficiente']['nome'].'<br>';
