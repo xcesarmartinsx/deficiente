@@ -31,7 +31,7 @@ $cakeDescription = __d('cake_dev', 'DefiProgram');
 		echo $this->html->css(array('bootstrap.min.css'));
 		echo $this->html->script(array('bootstrap.min'));
                 echo $this->html->script(array('jquery'));
-                //echo $this->Js->writeBuffer(array('cache' => FALSE));
+                echo $this->Js->writeBuffer(array('cache' => FALSE));
 	?>
     <style type="text/css">
       body {
@@ -43,6 +43,7 @@ $cakeDescription = __d('cake_dev', 'DefiProgram');
       .container {
         margin: 0 auto;
         max-width: 1000px;
+
       }
       .container > hr {
         margin: 60px 0;
@@ -63,7 +64,8 @@ $cakeDescription = __d('cake_dev', 'DefiProgram');
       }
       .jumbotron .btn {
         font-size: 21px;
-        padding: 14px 24px;
+        padding: 14px 44px;
+
       }
 
       /* Supporting marketing content */
@@ -103,6 +105,51 @@ $cakeDescription = __d('cake_dev', 'DefiProgram');
         border-right: 0;
         border-radius: 0 3px 3px 0;
       }
+      .ButtonSmall {
+
+            -webkit-appearance: button;
+            display: inline-block;
+            border-radius: 0 14px 14px 0;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+            border-bottom-left-radius: 0px;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+            background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+            background-repeat: repeat-x;
+            border-bottom-color: #b3b3b3;
+            line-height: 20px;
+            background-color: buttonface;
+            box-sizing: border-box;
+
+            border: 1px solid #ccc;
+            margin-left: -1px;
+            
+            height: 30px;
+            width: 60px;
+      }
+      
+      .ButtonSmall:hover {
+            color: #333;        
+            background-position: 0 -15px;
+            background-position-x: 0px;
+            background-position-y: -15px;
+            
+            -webkit-transition: background-position .1s linear;
+            -webkit-transition-property: background-position;
+            -webkit-transition-duration: 0.1s;
+            -webkit-transition-timing-function: linear;
+            -webkit-transition-delay: initial;
+            
+            transition: background-position .1s linear;
+            transition-property: background-position;
+            transition-duration: 0.1s;
+            transition-timing-function: linear;
+            transition-delay: initial;
+            
+             background-color: #e6e6e6;
+      }
+    
     </style>
 </head>
 <body>
@@ -128,12 +175,7 @@ $cakeDescription = __d('cake_dev', 'DefiProgram');
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
+
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>

@@ -1,6 +1,7 @@
 <?php
 class ProdutosController extends AppController{
-    public $components = array('RequestHandler'); //Componente que verifica o tipo de requisição
+    public $name = 'Produtos';
+   //public $components = array('RequestHandler'); //Componente que verifica o tipo de requisição
     
     public function index(){
         $this->set('produtos', $this->Produto->find('all'));

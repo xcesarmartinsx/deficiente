@@ -1,9 +1,46 @@
 <!-- File: /app/View/Deficientes/listar.ctp -->
+<style type="text/css">
+    .acimaTabela { 
+
+        width: 1010px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #0081c2;
+        padding-bottom: 0px;
+    }
+    .busca {
+        width: 330px;
+        float: right;
+        padding-top: 15px;
+   
+    }
+    .titulo {
+        float: left; 
+        padding-left: 35px;
+    }
+</style>
+        <div class="acimaTabela">
+             <div class="titulo">
+                <h3>Listagem de Deficientes</h3>
+             </div>  
+
+        <div class="busca">
+        <?php 
+             echo $this->Form->create('Deficiente', array('action' => 'listar', 'class' => 'form-search')); 
+             echo '<div class="input-append">';
+             echo $this->Form->input('', array('class' => 'span3 search-query', 'type' => 'text', 'placeholder'=>'Pesquisar','div' => ''));
+             echo '<button type="submit" class="ButtonSmall"><i class="icon-search"></i></button>';
+             echo $this->Form->end();
+             echo '</div>';
+        ?>
+              </div>   
+        </div>          
 <div class="container">
 <div class="row">
 <div class="span12">
-	<h3>Listagem de Deficientes</h3>
+   
  <table class="table table-bordered table-hover">
+     
     <thead>
     <tr>
       <th><?php echo $this->Paginator->sort('nome','Nome') ?></th>

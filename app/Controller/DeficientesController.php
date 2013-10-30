@@ -27,8 +27,15 @@ class DeficientesController extends AppController{
         } 
      }
     
-    public function listar(){
-       
+    public function listar($deficiente = null){
+       if($this->data){
+        $this->set('deficientes',
+                $this->Deficiente->find('all', 
+                           array('fields' => 
+                               array('Deficiente.id', 'Deficiente.nome', 'Deficiente.cpf', 'Deficiente.deficiencia'), 
+                                 'conditions' => array('Deficiente.nome LIKE'=> '%'.$this->data['Deficiente'].'%'))));   
+       }
+       else
         $this->set('deficientes', $this->Deficiente->find('all'));
     }
     
