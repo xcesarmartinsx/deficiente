@@ -6,9 +6,9 @@
  <table class="table table-bordered table-hover">
     <thead>
     <tr>
-      <th>Nome</th>
-      <th>Deficiência</th>
-      <th>CPF</th>
+      <th><?php echo $this->Paginator->sort('nome','Nome') ?></th>
+      <th><?php echo $this->Paginator->sort('deficiencia','Deficiência') ?></th>
+      <th><?php echo $this->Paginator->sort('cpf','CPF') ?></th>
       <th style="width: 20%;">Ações</th>
     </tr>
   </thead>

@@ -31,6 +31,7 @@ $cakeDescription = __d('cake_dev', 'DefiProgram');
 		echo $this->html->css(array('bootstrap.min.css'));
 		echo $this->html->script(array('bootstrap.min'));
                 echo $this->html->script(array('jquery'));
+                //echo $this->Js->writeBuffer(array('cache' => FALSE));
 	?>
     <style type="text/css">
       body {
