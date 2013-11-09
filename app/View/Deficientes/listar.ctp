@@ -1,4 +1,9 @@
 <!-- File: /app/View/Deficientes/listar.ctp -->
+<?php 
+     echo $this->html->script(array('autocomplete')); 
+     echo $this->html->script(array('jqueryUI')); 
+     echo $this->html->css(array('jqueryUI'));
+?>
 <style type="text/css">
     .acimaTabela { 
 

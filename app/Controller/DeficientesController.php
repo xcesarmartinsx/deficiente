@@ -14,8 +14,9 @@
 class DeficientesController extends AppController{
     //put your code here
     public $name = 'Deficientes';
-    public $helpers = array ('html','form');
+    public $helpers = array ('Js' => array('jquery'),'html','form');
     public $components = array('Session');
+   //public $helpers = array('Js');
     
      public function index($deficiente = null){
         
@@ -67,6 +68,38 @@ class DeficientesController extends AppController{
                 $this->Session->setFlash("seu post foi editado com sucesso!");
                 $this->redirect(array( 'action' => 'index'));
             }
+        }
+    }
+    
+    public function busca($Deficiente = null){
+          $this->layout = null;
+          if($Deficiente){
+             
+           $resultado = $this->Deficiente->find('all', 
+                                                array('fields' => 
+                                                      array('Deficiente.id', 'Deficiente.nome'), 
+                                                            'conditions' => array('Deficiente.nome LIKE'=> '%'.$Deficiente.'%')));
+ 
+            $array_json = array();
+            foreach($resultado as $result){
+                $array['label'] = $result['Deficiente']['nome'];
+                $array['id'] = $result['Deficiente']['id'];
+            }
+            array_push($array_json, $array);   
+            echo json_encode($array_json);
+          }
+    }
+    
+    public function testeAjax() {
+        if ($this->RequestHandler->isAjax()) {
+            $this->layout = 'ajax';
+            // Ações do Controler
+            // Exemplo
+            $this->set('dados',$this->request->data);
+            sleep(5); // para ver o efeito de fade
+            $this->render('ajax_conteudo');
+        } else {
+            //Ações caso o Js não esteje habilitado
         }
     }
 }
