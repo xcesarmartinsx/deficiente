@@ -31,15 +31,16 @@
 
         <div class="busca">
         <?php 
-             echo $this->Form->create('Deficiente', array('action' => 'listar', 'class' => 'form-search')); 
+            // echo $this->Form->create('Deficiente', array('action' => '', 'class' => 'form-search')); 
              echo '<div class="input-append">';
-             echo $this->Form->input('', array('class' => 'span3 search-query', 'type' => 'text', 'placeholder'=>'Pesquisar','div' => ''));
+             echo $this->Form->input('', array('class' => 'span3 search-query', 'type' => 'text', 'placeholder'=>'Pesquisar','div' => '', 'id'=> 'Deficiente'));
              echo '<button type="submit" class="ButtonSmall"><i class="icon-search"></i></button>';
-             echo $this->Form->end();
+            //  echo $this->Form->end();
              echo '</div>';
         ?>
               </div>   
-        </div>          
+        </div> 
+<div id="bloco">
 <div class="container">
 <div class="row">
 <div class="span12">
@@ -76,4 +77,5 @@
  </table>
         </div>
     </div>
+  </div>
   </div>
