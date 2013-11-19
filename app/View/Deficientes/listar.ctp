@@ -1,6 +1,7 @@
 <!-- File: /app/View/Deficientes/listar.ctp -->
 <?php 
      echo $this->html->script(array('autocomplete')); 
+     echo $this->html->script(array('listagem'));
      echo $this->html->script(array('jqueryUI')); 
      echo $this->html->css(array('jqueryUI'));
 ?>
@@ -23,19 +24,27 @@
         float: left; 
         padding-left: 35px;
     }
+    .link {
+        cursor: pointer;
+    }
+    .prox {
+        cursor: pointer;
+    }
+    .ant{
+        cursor: pointer;
+    }
 </style>
         <div class="acimaTabela">
              <div class="titulo">
                 <h3>Listagem de Deficientes</h3>
              </div>  
 
-        <div class="busca">
+        <div class="busca form-search">
         <?php 
-            // echo $this->Form->create('Deficiente', array('action' => '', 'class' => 'form-search')); 
+
              echo '<div class="input-append">';
              echo $this->Form->input('', array('class' => 'span3 search-query', 'type' => 'text', 'placeholder'=>'Pesquisar','div' => '', 'id'=> 'Deficiente'));
              echo '<button type="submit" class="ButtonSmall"><i class="icon-search"></i></button>';
-            //  echo $this->Form->end();
              echo '</div>';
         ?>
               </div>   
@@ -49,15 +58,21 @@
      
     <thead>
     <tr>
-      <th><?php echo $this->Paginator->sort('nome','Nome') ?></th>
-      <th><?php echo $this->Paginator->sort('deficiencia','Deficiência') ?></th>
-      <th><?php echo $this->Paginator->sort('cpf','CPF') ?></th>
+      <th><?php //echo $this->Paginator->sort('nome','Nome') ?>
+          <a class="PGnome link">Nome</a>
+      </th>
+      <th><?php //echo $this->Paginator->sort('deficiencia','Deficiência') ?>
+          <a class="PGdeficiencia link">Deficiência</a>
+      </th>
+      <th><?php //echo $this->Paginator->sort('cpf','CPF') ?>
+          <a class="PGcpf link">CPF</a>
+      </th>
       <th style="width: 20%;">Ações</th>
     </tr>
   </thead>
  
         <?php foreach ($deficientes as $deficiente): ?>
-            <tr>
+            <tr class="del tr<?php echo $deficiente['Deficiente']['id'];?>">
                 <td><?php echo $deficiente['Deficiente']['nome']?></td>
                 <td><?php echo $deficiente['Deficiente']['deficiencia']?></td>
                 <td><?php echo $deficiente['Deficiente']['cpf']?></td>
@@ -67,15 +82,30 @@
                     __('Tem Certeza que quer Editar # %s?', $deficiente['Deficiente']['nome'])); ?>
                 
        
-                <?php echo $this->Form->postLink(__('<i class="icon-remove icon-white"></i>'), 
+                <?php /*echo $this->Form->postLink(__('<i class="icon-remove icon-white"></i>'), 
                     array('action' => 'delete', $deficiente['Deficiente']['id']),
                     array('class'=>'btn btn-danger remover', 'escape' => false),
-                    __('Tem Certeza que quer deleter # %s?', $deficiente['Deficiente']['nome'])); ?></td>
+                    __('Tem Certeza que quer deleter # %s?', $deficiente['Deficiente']['nome']));*/ ?>
+                <a href="#" class="btn btn-danger remover" onclick="if (confirm(&quot;Tem Certeza que quer deleter # <?php echo $deficiente['Deficiente']['nome'];?>?&quot;)) { deleta(id= '<?php echo $deficiente['Deficiente']['id'];?>'); } event.returnValue = false; return false;"><i class="icon-remove icon-white"></i></a>
+                </td>
             </tr>
         <?php endforeach; ?>
+  
  
  </table>
         </div>
     </div>
+    <br/>
+<?php //echo $this->Paginator->prev('Anterior').' '.$this->Paginator->numbers().' '.$this->Paginator->next('Próximo');
+/*           
+echo $this->Paginator->counter(
+    'Page {:page} of {:pages}, showing {:current} records out of
+     {:count} total, starting on record {:start}, ending on {:end}'
+); */
+ ?>
+   <div class="paginacao"></div> 
+   <div class="PGtotal invisible"><?php echo $this->Paginator->counter('{:pages}'); ?></div>
+   <div class="PGatual invisible"><?php echo $this->Paginator->counter('{:page}'); ?></div
+ 
   </div>
   </div>
